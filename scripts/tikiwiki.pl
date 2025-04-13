@@ -174,7 +174,7 @@ if ($opts->{'newdb'} && !$upgrade) {
         }
 local ($dbtype, $dbname) = split(/_/, $opts->{'db'}, 2);
 local $dbuser = &mysql_user($d);
-local $dbpass = &mysql_pass($d);
+local $dbpass = &random_password(20);
 local $dbhost = &get_database_host($dbtype, $d);
 local $dberr = &check_script_db_connection($d, $dbtype, $dbname, $dbuser, $dbpass);
 return (0, "Database connection failed : $dberr") if ($dberr);
